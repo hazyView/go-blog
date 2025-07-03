@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogWriter</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <i class="fas fa-pen-nib logo-icon"></i>
+                <h1 class="app-title">BlogWriter</h1>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-primary" id="newPostBtn">
+                    <i class="fas fa-plus"></i>
+                    New Post
+                </button>
+                <button class="btn btn-secondary" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Current Post Editor -->
+            <div class="editor-section">
+                <div class="editor-header">
+                    <i class="fas fa-edit"></i>
+                    <span class="section-title">Current Post</span>
+                    <div class="editor-actions">
+                        <button class="btn btn-save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            Save
+                        </button>
+                        <button class="btn btn-delete" id="deleteBtn">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="editor-content">
+                    <input type="hidden" id="currentPostId" value="">
+                    <input type="text" id="postTitle" class="title-input" placeholder="Enter your post title..." maxlength="255">
+                    <textarea id="postContent" class="content-textarea" placeholder="Start writing your blog post..."></textarea>
+                    
+                    <div class="editor-footer">
+                        <div class="editor-stats">
+                            <span id="lastSaved">Last saved: Never</span>
+                            <span id="wordCount">0 words</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posts List -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-list"></i>
+                    <span class="section-title">Your Posts</span>
+                </div>
+                
+                <div class="posts-list" id="postsList">
+                    <!-- Posts will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management Modal -->
+        <div class="modal" id="userModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Sign In</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="userForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Sign In</button>
+                            <button type="button" class="btn btn-secondary" id="toggleMode">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
